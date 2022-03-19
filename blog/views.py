@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 class PostList(ListView):
@@ -18,14 +18,17 @@ class PostList(ListView):
 #         }
 #     )
 
-def single_post_page(request, pk):
+class PostDetail(DetailView):
+    model = Post
 
-    post = Post.objects.get(pk=pk) #괄호안의 조건을 만족하는 값을 가져오라는 것
+# def single_post_page(request, pk):
 
-    return render(
-        request,
-        'blog/single_post_page.html',
-        {
-            'post': post,
-        }
-    )
+#     post = Post.objects.get(pk=pk) #괄호안의 조건을 만족하는 값을 가져오라는 것
+
+#     return render(
+#         request,
+#         'blog/single_post_page.html',
+#         {
+#             'post': post,
+#         }
+#     )
